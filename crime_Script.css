@@ -31,9 +31,16 @@ body {
 }
 
 #crimetype input {
-    padding: 8px;
+    padding: 16px;
     border-radius: 5px;
     border: none;
+    font-size: 16px;
+}
+#crimetype select {
+    padding: 16px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
 }
 
 #submit {
