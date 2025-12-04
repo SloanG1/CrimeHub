@@ -7,7 +7,31 @@ body {
     color: white;
 }
 
-.grid-2 {
+#content-type {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#crimetype {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 20px;
+}
+
+#crimetype div {
+    display: flex;
+    flex-direction: column;
+}
+
+#crimetype label {
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+#crimetype input {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
 }
