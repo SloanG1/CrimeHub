@@ -35,3 +35,19 @@ body {
     border-radius: 5px;
     border: none;
 }
+
+#submit {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#submit input[type="submit"] {
+    width: 33%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
