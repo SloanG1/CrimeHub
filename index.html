@@ -7,17 +7,32 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="header" class="header">
+    <div id="header" class="grid1">
         <h1>CRIME PUB</h1>
     </div>
-    <div id="content-type" class="grid1">
+    <div id="content-type">
+        <form id="crimetype" class="grid2">
+            <div class="stateEntry" id="state">
+                <label for="state" id="stateLabel">STATE</label>
+                <input type="text" name="state" id="stateIn" placeholder="State Name">
+            </div>
+
+            <div class="CityEntry" id="city">
+                <label for="city" id="cityLabel">CITY</label>
+                <input type="text" name="city" id="cityIn" placeholder="City Name">
+            </div>
+
+            <div class="CrimeEntry" id="crime">
+                <label for="crime" id="crimeLabel">CRIME</label>
+                <input type="text" name="crime" id="crimeIn" placeholder="Crime Type">
+            </div>
+        </form>
+    </div>
+    <div id="submit" class="grid3">
 
     </div>
-    <div id="submit" class="grid2">
+    <div id="content" class="grid4">
 
-    </div>
-    <div id="content" class="grid3">
-        
     </div>
 </body>
 </html>
