@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRIME PUB</title>
     <script src="js_crime.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="crime_Script.css">
 </head>
 <body>
@@ -13,6 +14,27 @@
     </div>
     <div id="content-type">
         <form id="crimetype" class="grid2">
+            <div class="yearEntry" id="year">
+                <label for="year" id="yearLabel">YEAR</label>
+                <select name="year" id="yearIn" placeholder="from=01-2025&to=12-2025">
+                    <option value="from=01-2025&to=12-2025">2025</option>
+                    <option value="from=01-2024&to=12-2024">2024</option>
+                    <option value="from=01-2023&to=12-2023">2023</option>
+                    <option value="from=01-2022&to=12-2022">2022</option>
+                    <option value="from=01-2021&to=12-2021">2021</option>
+                    <option value="from=01-2020&to=12-2020">2020</option>
+                    <option value="from=01-2019&to=12-2019">2019</option>
+                    <option value="from=01-2018&to=12-2018">2018</option>
+                    <option value="from=01-2017&to=12-2017">2017</option>
+                    <option value="from=01-2016&to=12-2016">2016</option>
+                    <option value="from=01-2015&to=12-2015">2015</option>
+                    <option value="from=01-2014&to=12-2014">2014</option>
+                    <option value="from=01-2013&to=12-2013">2013</option>
+                    <option value="from=01-2012&to=12-2012">2012</option>
+                    <option value="from=01-2011&to=12-2011">2011</option>
+                    <option value="from=01-2010&to=12-2010">2010</option>
+                </select>
+            </div>
             <div class="stateEntry" id="state">
                 <label for="state" id="stateLabel">STATE</label>
                 <select name="state" id="stateIn" placeholder="AL">
@@ -116,6 +138,9 @@
         <input id="submitButton" type="submit" value="SUBMIT">
     </div>
     <div id="content" class="grid4">
+        <canvas id="crimeCanvas" width = 600 height = 400>
+            
+        </canvas>
         <h2>Crime data is in this little box
     </div>
 </body>
