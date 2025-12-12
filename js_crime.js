@@ -27,6 +27,12 @@ async function loadStateInfo(state, year) {
         const canvas = document.getElementById('crimeCanvas');
         const ctx = canvas.getContext('2d');
 
+        const existingCanvas = Chart.getChart(canvas);
+        if (existingCanvas) {
+            existingCanvas.destroy();
+        }
+        
+
         new Chart(ctx, {
         type: "bar",
         data: {
@@ -56,7 +62,6 @@ async function loadStateInfo(state, year) {
 }
 
 
-
 async function loadCityInfo(city) {
     const url = "Not avaiable yet";
     let response = await fetch(url);
@@ -65,3 +70,4 @@ async function loadCityInfo(city) {
         console.log(report);
     }
 }
+
