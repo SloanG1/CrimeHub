@@ -71,3 +71,10 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+#statePopulation {
+    margin-top: 20px;
+    font-size: 20px;
+    color: gold;
+    text-align: center;
+}
