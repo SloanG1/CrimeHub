@@ -29,11 +29,26 @@ async function loadStateInfo(state, year) {
         const canvas = document.getElementById('crimeCanvas');
         const ctx = canvas.getContext('2d');
 
+        const canvas2 = document.getElementById('RaceCanvas');
+        const ctx2 = canvas2.getContext('2d');
+
+        const canvas3 = document.getElementById('ArrestedSexCanvas');
+        const ctx3 = canvas3.getContext('2d');
+
         const existingCanvas = Chart.getChart(canvas);
         if (existingCanvas) {
             existingCanvas.destroy();
         }
         
+        const existingCanvas2 = Chart.getChart(canvas2);
+        if (existingCanvas2) {
+            existingCanvas2.destroy();
+        }
+
+        const existingCanvas3 = Chart.getChart(canvas3);
+        if (existingCanvas3) {
+            existingCanvas3.destroy();
+        }
 
         new Chart(ctx, {
         type: "bar",
@@ -55,9 +70,49 @@ async function loadStateInfo(state, year) {
             }
         }
         });
-        for (items in offenseBreakdown) {
-            
+
+        new Chart(ctx2, {
+        type: "bar",
+        data: {
+            labels: maleArrestsByAge,
+            datasets: [{
+            backgroundColor: 'blue',
+            data: arresteeRace
+            }]
+        },
+        options: {
+            plugins: {
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "Arrested Race",
+                font: {size: 16}
+            }
+            }
         }
+        });
+
+        new Chart(ctx3, {
+        type: "bar",
+        data: {
+            labels: maleArrestsByAge,
+            datasets: [{
+            backgroundColor: 'blue',
+            data: arresteeSex
+            }]
+        },
+        options: {
+            plugins: {
+            legend: {display: false},
+            title: {
+                display: true,
+                text: "Arrested Sex",
+                font: {size: 16}
+            }
+            }
+        }
+        });
+
         console.log(report);
     } 
     
