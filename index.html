@@ -94,47 +94,6 @@
                 </select>
             </div>
 
-            <div class="CityEntry" id="city">
-                <label for="city" id="cityLabel">CITY</label>
-                <input type="text" name="city" id="cityIn" placeholder="City Name">
-            </div>
-
-            <div class="CrimeEntry" id="crime">
-                <label for="crime" id="crimeLabel">CRIME</label>
-                <select name="crime" id="crimeIn" placeholder="All Other Offenses">
-                    <option value="All">All Categories</option>
-                    <option value="All Other Offenses">All Other Offenses</option>
-                    <option value="Aggravated Assault">Aggravated Assault</option>
-                    <option value="Arson">Arson</option>
-                    <option value="Burglary">Burglary</option>
-                    <option value="Counterfeiting/Forgery">Counterfeiting/Forgery</option>
-                    <option value="Destruction/Damage/Vandalism of Property">Destruction/Damage/Vandalism of Property</option>
-                    <option value="Disorderly Conduct">Disorderly Conduct</option>
-                    <option value="Drive Under the Influence">Drive Under the Influence</option>
-                    <option value="Drug/Narcotic Offenses">Drug/Narcotic Offenses</option>
-                    <option value="Drunkenness">Drunkenness</option>
-                    <option value="Embezzlement">Embezzlement</option>
-                    <option value="Family Offenses, Nonviolent">Family Offenses, Nonviolent</option>
-                    <option value="Fraud Offenses">Fraud Offenses</option>
-                    <option value="Gambling Offenses">Gambling Offenses</option>
-                    <option value="Homicide Offenses">Homicide Offenses</option>
-                    <option value="Human Trafficking">Human Trafficking</option>
-                    <option value="Larceny">Larceny</option>
-                    <option value="Liquor Law Violations">Liquor Law Violations</option>
-                    <option value="Motor Vehicle Theft">Motor Vehicle Theft</option>
-                    <option value="Prostitution Offenses">Prostitution Offenses</option>
-                    <option value="Robbery">Robbery</option>
-                    <option value="Runaway">Runaway</option>
-                    <option value="Sex Offenses">Sex Offenses</option>
-                    <option value="Sex Offenses, Non-forcible">Sex Offenses, Non-forcible</option>
-                    <option value="Simple Assault">Simple Assault</option>
-                    <option value="Stolen Property Offenses">Stolen Property Offenses</option>
-                    <option value="Suspicion">Suspicion</option>
-                    <option value="Vagrancy/Loitering">Vagrancy/Loitering</option>
-                    <option value="Weapon Law Violations">Weapon Law Violations</option>
-                </select>
-
-            </div>
         </form>
     </div>
     <div id="submit" class="grid3">
@@ -143,12 +102,23 @@
     <div id="content" class="grid4">
         <div id="statePopulation">
             <h1 id="statePop">
+
             </h1>
         </div>
         <canvas id="crimeCanvas" width = 600 height = 400>
             
         </canvas>
-        <h2>Crime data is in this little box </h2>
+        <div id="stateEconomy">
+            <h1>State Economy Information from 2023</h1>
+            <h1 id="UnemploymentRate"></h1>
+            <h1 id="MedianIncome"></h1>
+            <h1 id="TotalHouseholds"></h1>
+            <h1 id="EnglishSpeakers"></h1>
+            <h1 id="SpanishSpeakers"></h1>
+            <h1 id="IndoEuropeanSpeakers"></h1>
+            <h1 id="AsianSpeakers"></h1>
+            <h1 id="OtherSpeakers"></h1>
+        </div>
     </div>
 </body>
 </html>

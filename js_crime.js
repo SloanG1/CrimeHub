@@ -8,7 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const state = stateEntry.value;
         const year = yearEntry.value;
         loadStateInfo(state, year);
-        loadStateInfo2(state)
+        loadPopInfo(state);
+        loadEconomyInfo(state);
     })
 });
 
@@ -54,6 +55,9 @@ async function loadStateInfo(state, year) {
             }
         }
         });
+        for (items in offenseBreakdown) {
+            
+        }
         console.log(report);
     } 
     
@@ -62,17 +66,7 @@ async function loadStateInfo(state, year) {
     }
 }
 
-
-async function loadCityInfo(city) {
-    const url = "Not avaiable yet";
-    let response = await fetch(url);
-    if(response.ok) {
-        let report = await response.json();
-        console.log(report);
-    }
-}
-
-async function loadStateInfo2(state) {
+async function loadPopInfo(state) {
 
     const stateRow = {
         AL: "1", AK: "2", AZ: "3", AR: "4", CA: "5", CO: "6",
@@ -87,7 +81,6 @@ async function loadStateInfo2(state) {
     }
 
     const row = stateRow[state];
-
     const url = "https://api.census.gov/data/2020/dec/cd118?get=group(P1)&ucgid=pseudo(0100000US$0400000)";
 
 
@@ -105,5 +98,72 @@ async function loadStateInfo2(state) {
     else {
         document.querySelector("#statePopulation").textContent =
             "Could not load population data.";
+    }
+}
+
+async function loadEconomyInfo(state) {
+    //This dictionary state keys have different keys that the previous one
+    const stateRow = {
+        AL: "01", AK: "02", AZ: "04", AR: "05", CA: "06", CO: "08",
+        CT: "09", DE: "10", FL: "12", GA: "13", HI: "15", ID: "16",
+        IL: "17", IN: "18", IA: "19", KS: "20", KY: "21", LA: "22",
+        ME: "22", MD: "23", MA: "24", MI: "25", MN: "26", MS: "28",
+        MO: "29", MT: "30", NE: "31", NV: "32", NH: "33", NJ: "34",
+        NM: "35", NY: "36", NC: "37", ND: "38", OH: "39", OK: "40",
+        OR: "41", PA: "42", RI: "44", SC: "45", SD: "46", TN: "47",
+        TX: "48", UT: "49", VT: "50", VA: "51", WA: "53", WV: "54",
+        WI: "55", WY: "56"
+    }
+
+    const stateID = stateRow[state];
+    console.log(stateID);
+
+    const census_key = "328bb87c1e1bba3954a2f149072c8727924504fc";
+    /*Town information is too specific I found so all information is strictly state wide*/
+
+    // B23025_005E = Unemployment Rate
+    //B19013_001E = Median Household Income
+    //B19001_001E = Total Households
+    //C16002_002E = English Only Speakers
+    //C16002_004E = Spanish Speakers Limited English
+    //C16002_007E = Indo-European Languages Limited English
+    //C16002_010E = Asian and Pacific Islander Languages Limited English
+    //C16002_013E = Other Languages Limited English
+    const url = `https://api.census.gov/data/2023/acs/acs5?get=NAME,B23025_005E,B19013_001E,B19001_001E,C16002_002E,C16002_004E,C16002_007E,C16002_010E,C16002_013E&for=state:${stateID}&key=${census_key}`;
+
+
+    let response = await fetch(url);
+    if(response.ok) {
+        let report = await response.json();
+
+        Unemployment_Rate = report[1][1];
+        Median_Household_Income = report[1][2];
+        Total_Households = report[1][3];
+        English_Speakers = report[1][4];
+        Spanish_Speakers = report[1][5];
+        IndoEuropean_Speakers = report[1][6];
+        Asian_Speakers = report[1][7];
+        Other_Speakers = report[1][8];
+
+        document.getElementById("UnemploymentRate").innerHTML = `Unemployment: ${Unemployment_Rate}`;
+        document.getElementById("MedianIncome").innerHTML = `Median Household Income: ${Median_Household_Income}`;
+        document.getElementById("TotalHouseholds").innerHTML = `Total Households: ${Total_Households}`;
+        document.getElementById("EnglishSpeakers").innerHTML = `English Speakers: ${English_Speakers}`;
+        document.getElementById("SpanishSpeakers").innerHTML = `Spanish Speakers: ${Spanish_Speakers}`;
+        document.getElementById("IndoEuropeanSpeakers").innerHTML = `Indo-European Speakers: ${IndoEuropean_Speakers}`;
+        document.getElementById("AsianSpeakers").innerHTML = `Asian Speakers: ${Asian_Speakers}`;
+        document.getElementById("OtherSpeakers").innerHTML = `Other Speakers: ${Other_Speakers}`;
+
+    }
+    else {
+        document.querySelector("#UnemploymentRate").textContent ="Could not load population data.";
+        document.querySelector("#MedianIncome").textContent ="Could not load population data.";
+        document.querySelector("#TotalHouseholds").textContent ="Could not load population data.";
+        document.querySelector("#EnglishSpeakers").textContent ="Could not load population data.";
+        document.querySelector("#SpanishSpeakers").textContent ="Could not load population data.";
+        document.querySelector("#IndoEuropeanSpeakers").textContent ="Could not load population data.";
+        document.querySelector("#AsianSpeakers").textContent ="Could not load population data.";
+        document.querySelector("#OtherSpeakers").textContent ="Could not load population data.";
+        
     }
 }
